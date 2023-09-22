@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Feira-Nacional-Angular';
+
+
+  @ViewChild('initialText', {static : true})
+  initialText!: ElementRef<HTMLElement>
+
+  saibaMais(){
+    if(this.initialText){
+      this.initialText.nativeElement.scrollIntoView({
+        behavior: 'smooth'
+      })
+    }
+  }
 }
